@@ -1,0 +1,6 @@
+{
+  "name": "KonvertMais - Inteligência Comercial no WhatsApp 24/7",
+  "description": "Coloque um vendedor de inteligência artificial no seu WhatsApp. Ele responde na hora, entende áudio, tira dúvidas e conduz o cliente até a compra.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

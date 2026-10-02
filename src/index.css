@@ -1,0 +1,108 @@
+@import "tailwindcss";
+
+@theme {
+  --color-brand-purple: #7C3AED;
+  --color-brand-purpleLight: #A855F7;
+  --color-brand-purpleDark: #6D28D9;
+  --color-brand-darkBg: #07070B;
+  --color-brand-darkCard: #101018;
+  --color-brand-cardBorder: #242238;
+  --color-brand-grayLight: #E5E7EB;
+  --color-brand-grayMuted: #9CA3AF;
+  --color-brand-whatsapp: #22C55E;
+  --color-brand-whatsappHover: #16A34A;
+}
+
+body {
+  background-color: #07070B;
+  color: #E5E7EB;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  overflow-x: hidden;
+}
+
+::selection {
+  background-color: #7C3AED;
+  color: #FFFFFF;
+}
+
+/* Glow and gradient utilities */
+.bg-radial-gradient {
+  background: radial-gradient(circle at 50% 0%, rgba(124, 58, 237, 0.22) 0%, rgba(7, 7, 11, 0) 70%);
+}
+
+.text-gradient {
+  background: linear-gradient(135deg, #FFFFFF 30%, #9CA3AF 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.text-gradient-purple {
+  background: linear-gradient(135deg, #C084FC 0%, #A855F7 40%, #7C3AED 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.shadow-glow-purple {
+  box-shadow: 0 0 35px -5px rgba(124, 58, 237, 0.45);
+}
+
+.shadow-glow-purple-lg {
+  box-shadow: 0 0 60px -10px rgba(124, 58, 237, 0.6);
+}
+
+.shadow-glow-green {
+  box-shadow: 0 0 30px -5px rgba(34, 197, 94, 0.4);
+}
+
+@keyframes pulseGlow {
+  0%, 100% {
+    box-shadow: 0 0 25px rgba(124, 58, 237, 0.5);
+  }
+  50% {
+    box-shadow: 0 0 45px rgba(168, 85, 247, 0.85);
+  }
+}
+
+.pulse-btn {
+  animation: pulseGlow 3s infinite ease-in-out;
+}
+
+@keyframes pulseGreenGlow {
+  0%, 100% {
+    box-shadow: 0 0 25px rgba(34, 197, 94, 0.4);
+  }
+  50% {
+    box-shadow: 0 0 45px rgba(34, 197, 94, 0.8);
+  }
+}
+
+.pulse-btn-green {
+  animation: pulseGreenGlow 3s infinite ease-in-out;
+}
+
+@keyframes floatCard {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-8px); }
+}
+
+.float-card {
+  animation: floatCard 5s ease-in-out infinite;
+}
+
+/* Custom scrollbars */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #07070B;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #242238;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #7C3AED;
+}
