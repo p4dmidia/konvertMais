@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+﻿import React, { useState } from 'react';
 import { ArrowRight, Menu, X } from 'lucide-react';
 import { NINA_WHATSAPP_URL } from '../data/mockData';
 
@@ -37,7 +37,7 @@ export const Header: React.FC = () => {
           <a href="/#faq" className="hover:text-[#A855F7] transition-colors">
             FAQ
           </a>
-          <a href="#" className="hover:text-[#A855F7] transition-colors">
+          <a href="/academy" target="_blank" rel="noopener noreferrer" className="hover:text-[#A855F7] transition-colors">
             Konvert Academy
           </a>
         </nav>
@@ -124,7 +124,7 @@ export const Header: React.FC = () => {
             <a
               onClick={() => setMobileMenuOpen(false)}
               className="text-[#9CA3AF] hover:text-white py-1"
-              href="#"
+              href="/academy" target="_blank" rel="noopener noreferrer"
             >
               Konvert Academy
             </a>
@@ -155,3 +155,5 @@ export const Header: React.FC = () => {
     </header>
   );
 };
+
+

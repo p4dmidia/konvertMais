@@ -1,4 +1,4 @@
-import React from 'react';
+﻿import React from 'react';
 import { Mail, MessageCircle, Phone } from 'lucide-react';
 import { NINA_WHATSAPP_URL } from '../data/mockData';
 
@@ -100,7 +100,7 @@ export const Footer: React.FC = () => {
             </p>
             <div className="pt-2 text-xs text-[#9CA3AF] space-y-2">
               <div className="flex flex-wrap items-center gap-3">
-                <a className="hover:text-white transition" href="#">
+                <a className="hover:text-white transition" href="/academy" target="_blank" rel="noopener noreferrer">
                   Konvert Academy
                 </a>
                 <span>•</span>
@@ -136,3 +136,5 @@ export const Footer: React.FC = () => {
     </footer>
   );
 };
+
+
