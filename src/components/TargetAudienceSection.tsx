@@ -1,92 +1,122 @@
 import React from 'react';
-import { CheckCircle2, XCircle } from 'lucide-react';
+import { Building2, Briefcase, Repeat, CalendarCheck } from 'lucide-react';
 
 export const TargetAudienceSection: React.FC = () => {
+  const pillars = [
+    {
+      title: 'Alto Ticket & Vendas Consultivas',
+      badge: 'Imóveis, Veículos & B2B',
+      icon: <Building2 className="w-6 h-6" />,
+      color: 'purple',
+      borderColor: 'border-[#7C3AED]/40 hover:border-[#7C3AED]',
+      iconBg: 'bg-[#7C3AED]/15 text-[#A855F7]',
+      badgeBg: 'bg-[#7C3AED]/15 text-[#A855F7] border-[#7C3AED]/30',
+      description:
+        'Imobiliárias, corretores, loteamentos, incorporadoras, consórcios e soluções B2B.',
+      action:
+        'A IA entende o perfil (orçamento, entrada, localização), filtra curiosos sem poder de compra e entrega para o corretor com a visita ou simulação engatilhada.',
+    },
+    {
+      title: 'Serviços Especializados & Agências',
+      badge: 'Agências & Consultorias',
+      icon: <Briefcase className="w-6 h-6" />,
+      color: 'green',
+      borderColor: 'border-[#22C55E]/40 hover:border-[#22C55E]',
+      iconBg: 'bg-[#22C55E]/15 text-[#22C55E]',
+      badgeBg: 'bg-[#22C55E]/15 text-[#22C55E] border-[#22C55E]/30',
+      description:
+        'Agências de marketing e publicidade, consultorias, escritórios de advocacia, engenharia e contabilidade.',
+      action:
+        'A IA tira as dúvidas iniciais de escopo, qualifica o momento do cliente e agenda reuniões de apresentação direto na agenda do especialista.',
+    },
+    {
+      title: 'Contratos, Planos & Assinaturas',
+      badge: 'Recorrência & Proteção',
+      icon: <Repeat className="w-6 h-6" />,
+      color: 'green',
+      borderColor: 'border-[#22C55E]/40 hover:border-[#22C55E]',
+      iconBg: 'bg-[#22C55E]/15 text-[#22C55E]',
+      badgeBg: 'bg-[#22C55E]/15 text-[#22C55E] border-[#22C55E]/30',
+      description:
+        'Planos de saúde, seguros, planos funerários, clubes de benefícios, provedores e mensalidades.',
+      action:
+        'Apresenta tabelas e faixas de preço/idade, tira dúvidas de cobertura e carência, recolhe dados cadastrais e entrega pronto para o fechamento.',
+    },
+    {
+      title: 'Saúde, Estética & Agendamentos',
+      badge: 'Clínicas & Consultórios',
+      icon: <CalendarCheck className="w-6 h-6" />,
+      color: 'purple',
+      borderColor: 'border-[#7C3AED]/40 hover:border-[#7C3AED]',
+      iconBg: 'bg-[#7C3AED]/15 text-[#A855F7]',
+      badgeBg: 'bg-[#7C3AED]/15 text-[#A855F7] border-[#7C3AED]/30',
+      description:
+        'Clínicas odontológicas, dermatologia, estética, cirurgias, barbearias e centros de saúde.',
+      action:
+        'Informa valores de procedimentos, explica como funciona a avaliação, consulta horários livres em tempo real e envia lembretes para evitar faltas.',
+    },
+  ];
+
   return (
     <section className="py-20 bg-[#101018]/40 border-y border-[#242238]/60" id="para-quem-e">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center max-w-3xl mx-auto space-y-4 mb-14">
-          <span className="text-xs uppercase tracking-widest font-semibold text-[#A855F7] bg-[#7C3AED]/10 px-3 py-1 rounded-full border border-[#7C3AED]/30">
-            Perfil Ideal
+          <span className="text-xs uppercase tracking-widest font-semibold text-[#A855F7] bg-[#7C3AED]/10 px-3.5 py-1.5 rounded-full border border-[#7C3AED]/30 inline-block">
+            Para quem é
           </span>
           <h2 className="text-3xl sm:text-5xl font-extrabold text-white tracking-tight">
-            Para quem é
+            Feito para quem vende e atende pelo WhatsApp
           </h2>
-          <p className="text-[#9CA3AF] text-base sm:text-lg">
-            O Konvert Mais foi desenhado especificamente para negócios que investem em anúncios e vendem por contrato ou assinatura.
+          <p className="text-sm sm:text-base text-[#9CA3AF] max-w-2xl mx-auto leading-relaxed">
+            Seja em vendas de alto ticket, contratos recorrentes ou agendamentos, o KonvertMais se adapta à dinâmica comercial exata do seu negócio.
           </p>
         </div>
 
-        {/* 2 Column Comparison: É para você / Não é para você */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-          {/* É para você se: */}
-          <div className="p-8 rounded-3xl bg-[#101018] border border-[#22C55E]/40 shadow-glow-green/10 space-y-6">
-            <div className="flex items-center gap-3">
-              <div className="w-10 h-10 rounded-xl bg-[#22C55E]/20 text-[#22C55E] flex items-center justify-center text-xl">
-                <CheckCircle2 className="w-6 h-6" />
+        {/* Grid com os 4 Pilares por Dinâmica de Venda */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8">
+          {pillars.map((pillar, idx) => (
+            <div
+              key={idx}
+              className={`p-7 sm:p-8 rounded-3xl bg-[#101018] border ${pillar.borderColor} transition duration-300 flex flex-col justify-between space-y-5`}
+            >
+              <div className="space-y-4">
+                <div className="flex items-center justify-between">
+                  <div className={`w-12 h-12 rounded-2xl ${pillar.iconBg} flex items-center justify-center`}>
+                    {pillar.icon}
+                  </div>
+                  <span className={`text-[11px] font-bold uppercase tracking-wider px-3 py-1 rounded-full border ${pillar.badgeBg}`}>
+                    {pillar.badge}
+                  </span>
+                </div>
+
+                <div>
+                  <h3 className="text-xl font-bold text-white mb-2">{pillar.title}</h3>
+                  <p className="text-xs sm:text-sm text-[#A855F7] font-medium leading-relaxed">
+                    {pillar.description}
+                  </p>
+                </div>
+
+                <p className="text-xs sm:text-sm text-[#9CA3AF] leading-relaxed pt-1 border-t border-white/5">
+                  <strong className="text-white font-semibold">O que a IA faz: </strong>
+                  {pillar.action}
+                </p>
               </div>
-              <h3 className="text-xl font-bold text-white">É para você se:</h3>
             </div>
-
-            <ul className="space-y-4 text-sm sm:text-base text-[#E5E7EB]">
-              <li className="flex items-start gap-3">
-                <CheckCircle2 className="w-5 h-5 text-[#22C55E] shrink-0 mt-0.5" />
-                <span>
-                  Você vende <strong>consórcio, seguro, plano funerário, plano de saúde, assinatura</strong> ou outro produto por contrato.
-                </span>
-              </li>
-              <li className="flex items-start gap-3">
-                <CheckCircle2 className="w-5 h-5 text-[#22C55E] shrink-0 mt-0.5" />
-                <span>
-                  Já <strong>investe em anúncio</strong> e recebe pelo menos <strong>20 leads por dia</strong> no WhatsApp.
-                </span>
-              </li>
-              <li className="flex items-start gap-3">
-                <CheckCircle2 className="w-5 h-5 text-[#22C55E] shrink-0 mt-0.5" />
-                <span>
-                  Seu time <strong>não dá conta</strong> de responder todo mundo rápido.
-                </span>
-              </li>
-            </ul>
-          </div>
-
-          {/* Não é para você se: */}
-          <div className="p-8 rounded-3xl bg-[#101018] border border-rose-500/40 space-y-6">
-            <div className="flex items-center gap-3">
-              <div className="w-10 h-10 rounded-xl bg-rose-500/20 text-rose-400 flex items-center justify-center text-xl">
-                <XCircle className="w-6 h-6" />
-              </div>
-              <h3 className="text-xl font-bold text-white">Não é para você se:</h3>
-            </div>
-
-            <ul className="space-y-4 text-sm sm:text-base text-[#9CA3AF]">
-              <li className="flex items-start gap-3">
-                <XCircle className="w-5 h-5 text-rose-400 shrink-0 mt-0.5" />
-                <span>
-                  Ainda não gera leads e não investe em tráfego ou anúncios para o WhatsApp.
-                </span>
-              </li>
-              <li className="flex items-start gap-3">
-                <XCircle className="w-5 h-5 text-rose-400 shrink-0 mt-0.5" />
-                <span>
-                  Procura apenas uma ferramenta barata para tentar configurar e programar sozinho.
-                </span>
-              </li>
-            </ul>
-          </div>
+          ))}
         </div>
 
-        {/* Bottom Tag */}
-        <div className="mt-10 text-center">
-          <div className="inline-flex items-center gap-3 px-6 py-3 rounded-full bg-[#7C3AED]/10 border border-[#7C3AED]/30 text-white font-medium text-sm sm:text-base">
-            <i className="fa-brands fa-whatsapp text-[#22C55E] text-lg"></i>
-            <span>
-              Entregamos o agente pronto e testado com o <strong>modelo validado do seu nicho</strong>.
-            </span>
+        {/* Linha sob os cartões */}
+        <div className="mt-12 text-center max-w-3xl mx-auto space-y-3">
+          <div className="p-5 rounded-2xl bg-[#101018] border border-[#242238] space-y-2">
+            <p className="text-sm text-[#9CA3AF]">
+              Não é para quem procura um robô de menu ("digite 1"). O KonvertMais conversa de verdade, entende o que a pessoa precisa e só passa para o seu time quem vale o seu tempo.
+            </p>
+            <p className="text-xs sm:text-sm font-semibold text-white pt-1">
+              💡 Em resumo: se o seu cliente te chama no WhatsApp antes de fechar e a rapidez da resposta decide a venda, o KonvertMais foi feito para você.
+            </p>
           </div>
         </div>
       </div>
     </section>
   );
 };
-

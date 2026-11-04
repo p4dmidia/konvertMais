@@ -1,31 +1,58 @@
 import { DemoNiche } from '../types';
 
+export const NINA_WHATSAPP_URL =
+  'https://wa.me/5531995006891?text=Oi%2C%20vim%20pelo%20site%20do%20KonvertMais';
+
 export const FAQ_ITEMS = [
   {
-    question: 'A IA vai falar besteira com meu cliente?',
+    question: 'A IA vai falar besteira com o meu cliente?',
     answer:
-      'Ela segue o roteiro do seu negócio e tem travas: não promete o que você não oferece, não inventa preço e passa para um humano quando não sabe.',
+      'Ela responde só com o que está no material da sua empresa e não inventa preço nem promessa. Quando não sabe, passa a conversa para uma pessoa do time com um resumo. Tudo fica visível no painel.',
+  },
+  {
+    question: 'A IA vai substituir o meu vendedor?',
+    answer:
+      'Não. Ela atende primeiro, tira os curiosos da frente e entrega para o vendedor quem quer comprar. O vendedor passa o dia com cliente quente.',
+  },
+  {
+    question: 'Meu cliente prefere falar com gente.',
+    answer:
+      'O humano continua atendendo. A IA só garante que ninguém fique horas sem resposta. Se o cliente pedir uma pessoa, a conversa passa na hora.',
   },
   {
     question: 'Funciona no meu número atual?',
-    answer: 'Sim, no WhatsApp comum ou na API oficial.',
+    answer:
+      'Sim. Você conecta o número que já usa lendo um QR Code, ou usa a API oficial do WhatsApp.',
   },
   {
-    question: 'Preciso configurar alguma coisa?',
-    answer: 'Não. Nós implantamos e testamos.',
+    question: 'Corro risco de ter o número bloqueado?',
+    answer:
+      'Pela API oficial da Meta, não existe o risco da conexão não oficial. Pelo QR Code, o sistema tem proteção de envio: aquecimento, limite diário e janela de horário. Nenhuma ferramenta garante risco zero nessa conexão.',
   },
   {
-    question: 'E se eu quiser falar com o cliente?',
-    answer: 'Você assume a conversa a qualquer momento pelo painel.',
+    question: 'Como funcionam os créditos?',
+    answer:
+      'O plano já vem com créditos para cerca de 200 conversas por mês, e o que sobra passa para o mês seguinte. Se precisar de mais, você compra uma recarga a partir de R$ 50. O painel mostra o gasto e avisa antes do saldo acabar.',
+  },
+  {
+    question: 'E se eu ainda não tenho leads?',
+    answer:
+      'A P4D Mídia, nossa parceira, gerencia seus anúncios no Meta e no Google com 30% de desconto para assinantes. Os contatos que chegam já são atendidos pelo KonvertMais.',
   },
   {
     question: 'Tem fidelidade?',
-    answer: 'Permanência mínima de 3 meses.',
+    answer:
+      'Não. Você pode cancelar quando quiser, sem taxa de cancelamento. O mês pago continua ativo até o fim.',
   },
   {
-    question: 'Quanto custa?',
+    question: 'Preciso configurar tudo sozinho?',
     answer:
-      'R$ 997/mês só a ferramenta, ou R$ 1.497/mês com gestão de anúncios. O plano certo sai do diagnóstico.',
+      'Não precisa. Você pode configurar sozinho em minutos, seguindo o passo a passo da Konvert Academy, ou deixar com o nosso time, que coloca o seu agente de IA no ar em até 48 horas úteis. A implantação pelo time é grátis: de R$ 1.000 por R$ 0.',
+  },
+  {
+    question: 'Já tenho CRM.',
+    answer:
+      'O que costuma faltar é quem responda em segundos e faça a triagem. Na conversa de diagnóstico mostramos como o KonvertMais entra no seu processo.',
   },
 ];
 
@@ -52,7 +79,7 @@ export const DEMO_NICHES: DemoNiche[] = [
       {
         id: '2',
         sender: 'system',
-        text: 'Respondido em 1 minuto pelo Konvert Mais',
+        text: 'Respondido em segundos pelo KonvertMais',
         time: '22:16',
       },
       {
@@ -108,7 +135,7 @@ export const DEMO_NICHES: DemoNiche[] = [
       {
         id: 's2',
         sender: 'system',
-        text: 'Respondido em 1 minuto pelo Konvert Mais',
+        text: 'Respondido em segundos pelo KonvertMais',
         time: '23:41',
       },
       {
@@ -166,7 +193,7 @@ export const DEMO_NICHES: DemoNiche[] = [
       {
         id: 'a2',
         sender: 'system',
-        text: 'Respondido em 1 minuto pelo Konvert Mais',
+        text: 'Respondido em segundos pelo KonvertMais',
         time: '21:06',
       },
       {
@@ -202,5 +229,54 @@ export const DEMO_NICHES: DemoNiche[] = [
       },
     ],
   },
+  {
+    id: 'clinicas',
+    name: 'Clínicas e serviços',
+    category: 'Clínicas & Consultórios',
+    avatarLetter: 'CS',
+    quickReplies: [
+      'Oi, quanto custa um clareamento?',
+      'Como funciona a avaliação?',
+      'Tem horário para esta semana?',
+    ],
+    messages: [
+      {
+        id: 'c1',
+        sender: 'client',
+        text: 'Oi, quanto custa um clareamento?',
+        time: '20:41',
+      },
+      {
+        id: 'c2',
+        sender: 'agent',
+        text: 'Boa noite! O clareamento no consultório sai a partir de R$ 890, e a avaliação é gratuita. Prefere avaliar esta semana ou na próxima?',
+        time: '20:41',
+      },
+      {
+        id: 'c3',
+        sender: 'client',
+        text: 'Essa semana, de manhã.',
+        time: '20:42',
+      },
+      {
+        id: 'c4',
+        sender: 'agent',
+        text: 'Tenho quinta às 9h ou sexta às 10h30 com a Dra. Paula Moreira. Qual fica melhor?',
+        time: '20:42',
+      },
+      {
+        id: 'c5',
+        sender: 'client',
+        text: 'Quinta às 9h.',
+        time: '20:43',
+      },
+      {
+        id: 'c6',
+        sender: 'agent',
+        text: 'Marcado! Quinta, às 9h, na Clínica Sorriso Pleno. Mando um lembrete na quarta à tarde.',
+        time: '20:43',
+        meta: '✓ Avaliação agendada na agenda da clínica',
+      },
+    ],
+  },
 ];
-

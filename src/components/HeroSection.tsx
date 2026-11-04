@@ -1,12 +1,16 @@
 import React, { useState } from 'react';
-import { Play, Pause, CheckCheck, TrendingUp, Sparkles, Check, Phone, MoreVertical } from 'lucide-react';
+import { Play, Pause, CheckCheck, TrendingUp, Phone, MoreVertical, ArrowDown } from 'lucide-react';
+import { NINA_WHATSAPP_URL } from '../data/mockData';
 
-interface HeroSectionProps {
-  onOpenDiagnostic: () => void;
-}
-
-export const HeroSection: React.FC<HeroSectionProps> = ({ onOpenDiagnostic }) => {
+export const HeroSection: React.FC = () => {
   const [isPlayingAudio, setIsPlayingAudio] = useState(false);
+
+  const scrollToSection = (id: string) => {
+    const el = document.getElementById(id);
+    if (el) {
+      el.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
 
   return (
     <section className="relative pt-10 pb-20 md:pt-16 md:pb-28 overflow-hidden" id="hero">
@@ -20,71 +24,96 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onOpenDiagnostic }) =>
                 <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#A855F7] opacity-75"></span>
                 <span className="relative inline-flex rounded-full h-2 w-2 bg-[#7C3AED]"></span>
               </span>
-              <span>⚡ Nenhum lead morre no WhatsApp</span>
+              <span>⚡ Nenhum lead esquecido no WhatsApp</span>
             </div>
 
-            {/* Main Headline (Copy exata do PDF) */}
+            {/* Main Headline */}
             <h1 className="text-3xl sm:text-5xl lg:text-6xl font-extrabold text-white tracking-tight leading-[1.12]">
-              Você paga pelo lead. <br className="hidden sm:inline" />
-              <span className="text-gradient-purple">Quem está respondendo ele?</span>
+              Seu WhatsApp vendendo 24 horas, <br className="hidden sm:inline" />
+              <span className="text-gradient-purple">com ou sem time de vendas grande.</span>
             </h1>
 
-            {/* Subheadline (Copy exata do PDF) */}
+            {/* Subheadline */}
             <p className="text-base sm:text-lg text-[#9CA3AF] max-w-2xl mx-auto lg:mx-0 font-normal leading-relaxed">
-              O <strong className="text-white font-semibold">Konvert Mais</strong> coloca um agente de IA no WhatsApp da sua empresa. Ele responde em 1 minuto, 24 horas por dia, qualifica, faz o follow-up e entrega para o seu time só quem está pronto para comprar.
+              Transforme seu WhatsApp em uma operação comercial 24h: nossa IA atende na hora, separa quem quer comprar de quem só está pesquisando e entrega a negociação pronta para o seu time fechar. Agora se o seu problema for a falta de volume de leads, também temos a solução em tráfego pago pra você!
             </p>
 
-            {/* CTA Buttons & Sub-button copy */}
+            {/* Dois cartões lado a lado (empilham no celular) */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-2 text-left">
+              {/* Cartão 1 */}
+              <div className="p-5 rounded-2xl bg-[#101018] border border-[#242238] hover:border-[#7C3AED]/50 transition duration-300 flex flex-col justify-between space-y-4">
+                <div className="space-y-2">
+                  <span className="inline-block text-[11px] font-bold uppercase tracking-wider text-[#A855F7] bg-[#7C3AED]/15 px-2.5 py-0.5 rounded-full border border-[#7C3AED]/30">
+                    Já tenho leads
+                  </span>
+                  <p className="text-xs sm:text-sm text-[#E5E7EB] leading-relaxed">
+                    <strong className="text-white">Chegam mais mensagens do que o time consegue responder.</strong> A IA atende todo mundo na hora, separa os curiosos e passa os clientes quentes.
+                  </p>
+                </div>
+                <button
+                  type="button"
+                  onClick={() => scrollToSection('ja-tenho-leads')}
+                  className="w-full inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl text-xs sm:text-sm font-semibold text-white bg-[#171722] hover:bg-[#7C3AED] border border-[#242238] hover:border-[#7C3AED] transition-all cursor-pointer"
+                >
+                  <span>Quero atender melhor</span>
+                  <ArrowDown className="w-3.5 h-3.5" />
+                </button>
+              </div>
+
+              {/* Cartão 2 */}
+              <div className="p-5 rounded-2xl bg-[#101018] border border-[#242238] hover:border-[#22C55E]/50 transition duration-300 flex flex-col justify-between space-y-4">
+                <div className="space-y-2">
+                  <span className="inline-block text-[11px] font-bold uppercase tracking-wider text-[#22C55E] bg-[#22C55E]/15 px-2.5 py-0.5 rounded-full border border-[#22C55E]/30">
+                    Quero ter leads
+                  </span>
+                  <p className="text-xs sm:text-sm text-[#E5E7EB] leading-relaxed">
+                    <strong className="text-white">Quero montar uma máquina de vendas do zero.</strong> A P4D gera os contatos com tráfego pago e o KonvertMais atende cada um deles.
+                  </p>
+                </div>
+                <button
+                  type="button"
+                  onClick={() => scrollToSection('quero-ter-leads')}
+                  className="w-full inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl text-xs sm:text-sm font-semibold text-white bg-[#171722] hover:bg-emerald-600 border border-[#242238] hover:border-emerald-600 transition-all cursor-pointer"
+                >
+                  <span>Quero gerar e atender</span>
+                  <ArrowDown className="w-3.5 h-3.5" />
+                </button>
+              </div>
+            </div>
+
+            {/* CTA Principal */}
             <div className="pt-2 space-y-3">
               <div className="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4">
-                <button
-                  onClick={onOpenDiagnostic}
+                <a
+                  href={NINA_WHATSAPP_URL}
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="pulse-btn-green w-full sm:w-auto inline-flex items-center justify-center gap-3 px-8 py-4 rounded-xl text-base font-bold text-white bg-gradient-to-r from-[#22C55E] to-emerald-600 hover:from-emerald-500 hover:to-emerald-700 shadow-glow-green transition-all duration-200 hover:scale-[1.02] cursor-pointer"
                 >
                   <i className="fa-brands fa-whatsapp text-2xl"></i>
-                  <span>Quero meu diagnóstico gratuito</span>
-                </button>
-                <a
-                  href="#demonstracao"
-                  className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-4 rounded-xl text-sm font-semibold text-white bg-[#101018] border border-[#242238] hover:border-[#7C3AED]/50 transition cursor-pointer"
-                >
-                  <Sparkles className="w-4 h-4 text-[#A855F7]" />
-                  <span>Ver conversa com o agente</span>
+                  <span>Falar com a Nina no WhatsApp</span>
                 </a>
               </div>
 
-              {/* Abaixo do botão (Texto exato do PDF) */}
+              {/* Linha sob o botão */}
               <p className="text-xs sm:text-sm text-[#9CA3AF] font-medium pt-1">
-                Para empresas de consórcio, seguros, planos e assinaturas · Planos a partir de <strong className="text-white">R$ 997/mês</strong>
+                A partir de R$ 247 por mês · 7 dias grátis para testar · Implantação grátis · Sem fidelidade
               </p>
-
-              {/* Badges de garantia */}
-              <div className="text-xs text-[#9CA3AF] flex flex-wrap items-center justify-center lg:justify-start gap-y-1 gap-x-4 pt-2 border-t border-white/5">
-                <span className="flex items-center gap-1.5">
-                  <Check className="w-3.5 h-3.5 text-[#22C55E]" /> Sem taxa de implantação
-                </span>
-                <span className="flex items-center gap-1.5">
-                  <Check className="w-3.5 h-3.5 text-[#22C55E]" /> No ar em até 7 dias
-                </span>
-                <span className="flex items-center gap-1.5">
-                  <Check className="w-3.5 h-3.5 text-[#22C55E]" /> Modelo pronto do seu nicho
-                </span>
-              </div>
             </div>
 
-            {/* Stats Bar Minimal */}
+            {/* Faixa com três números (mantém o componente atual) */}
             <div className="pt-6 border-t border-[#242238]/70 grid grid-cols-3 gap-4 max-w-lg mx-auto lg:mx-0">
               <div>
-                <p className="text-2xl font-extrabold text-[#22C55E] tabular-nums">1 min</p>
-                <p className="text-xs text-[#9CA3AF]">Tempo de resposta</p>
+                <p className="text-2xl font-extrabold text-[#22C55E]">Segundos</p>
+                <p className="text-xs text-[#9CA3AF]">para responder o primeiro contato</p>
               </div>
               <div>
                 <p className="text-2xl font-extrabold text-[#A855F7]">24/7</p>
-                <p className="text-xs text-[#9CA3AF]">Noite e fim de semana</p>
+                <p className="text-xs text-[#9CA3AF]">inclusive à noite e no fim de semana</p>
               </div>
               <div>
                 <p className="text-2xl font-extrabold text-white tabular-nums">100%</p>
-                <p className="text-xs text-[#9CA3AF]">Leads atendidos e no CRM</p>
+                <p className="text-xs text-[#9CA3AF]">dos contatos registrados no CRM</p>
               </div>
             </div>
           </div>
@@ -108,7 +137,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onOpenDiagnostic }) =>
                     </div>
                     <div>
                       <div className="flex items-center gap-1.5">
-                        <span className="font-semibold text-white text-xs">Nacional Consórcios • IA</span>
+                        <span className="font-semibold text-white text-xs">KonvertMais • Atendimento</span>
                         <i className="fa-solid fa-circle-check text-[#A855F7] text-[11px]"></i>
                       </div>
                       <p className="text-[10px] text-[#22C55E] font-medium flex items-center gap-1">
@@ -120,6 +149,13 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onOpenDiagnostic }) =>
                     <Phone className="w-3.5 h-3.5" />
                     <MoreVertical className="w-3.5 h-3.5" />
                   </div>
+                </div>
+
+                {/* Exemplo de conversa badge */}
+                <div className="px-4 py-1.5 bg-[#7C3AED]/20 border-b border-[#7C3AED]/30 text-center">
+                  <span className="text-[10px] text-[#A855F7] font-semibold">
+                    Exemplo de conversa
+                  </span>
                 </div>
 
                 {/* Chat Feed */}
@@ -134,6 +170,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onOpenDiagnostic }) =>
                     <div className="bg-[#1f2c34] text-white p-2.5 rounded-2xl rounded-tr-none max-w-[85%] border border-white/5 space-y-1">
                       <div className="flex items-center gap-2">
                         <button
+                          type="button"
                           onClick={() => setIsPlayingAudio(!isPlayingAudio)}
                           className="w-6 h-6 rounded-full bg-[#22C55E] flex items-center justify-center text-white text-[10px] hover:scale-105 transition cursor-pointer"
                         >
@@ -161,7 +198,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onOpenDiagnostic }) =>
                   {/* AI Fast Answer Tag */}
                   <div className="flex items-center justify-center gap-1.5 py-0.5">
                     <span className="text-[9px] font-semibold text-[#A855F7] bg-[#7C3AED]/20 px-2 py-0.5 rounded-full border border-[#7C3AED]/30">
-                      ⚡ Respondeu em 1 minuto
+                      ⚡ Respondeu em segundos
                     </span>
                   </div>
 
@@ -215,4 +252,3 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onOpenDiagnostic }) =>
     </section>
   );
 };
-

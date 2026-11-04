@@ -1,37 +1,45 @@
 import React, { useState } from 'react';
-import { ArrowRight, Menu, X, Sparkles } from 'lucide-react';
+import { ArrowRight, Menu, X } from 'lucide-react';
+import { NINA_WHATSAPP_URL } from '../data/mockData';
 
-interface HeaderProps {
-  onOpenDiagnostic: () => void;
-}
-
-export const Header: React.FC<HeaderProps> = ({ onOpenDiagnostic }) => {
+export const Header: React.FC = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   return (
     <header className="sticky top-0 z-50 backdrop-blur-xl bg-[#07070B]/85 border-b border-[#242238]/60 transition-all duration-300">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
         {/* Brand Logo */}
-        <a href="#" className="flex items-center group">
+        <a href="/" className="flex items-center group">
           <img
             src="/logo.png"
-            alt="Konvert Mais - Inteligência Comercial"
+            alt="KonvertMais"
             className="h-10 sm:h-11 w-auto object-contain transition-transform duration-300 group-hover:scale-105 drop-shadow-[0_0_15px_rgba(168,85,247,0.25)]"
           />
         </a>
 
         {/* Desktop Navigation Links */}
-        <nav className="hidden lg:flex items-center gap-7 text-sm font-medium text-[#9CA3AF]">
-          <a href="#dor" className="hover:text-[#A855F7] transition-colors">O Gargalo</a>
-          <a href="#como-funciona" className="hover:text-[#A855F7] transition-colors">Como funciona</a>
-          <a href="#o-que-faz" className="hover:text-[#A855F7] transition-colors">O que o agente faz</a>
-          <a href="#para-quem-e" className="hover:text-[#A855F7] transition-colors">Para quem é</a>
-          <a href="#a-conta" className="hover:text-[#A855F7] transition-colors">A Conta</a>
-          <a href="#planos" className="hover:text-[#A855F7] transition-colors flex items-center gap-1.5">
-            <span>Planos</span>
-            <span className="w-2 h-2 rounded-full bg-[#A855F7] animate-pulse"></span>
+        <nav className="hidden lg:flex items-center gap-3.5 xl:gap-5 text-sm font-medium text-[#9CA3AF] whitespace-nowrap">
+          <a href="/#ja-tenho-leads" className="hover:text-[#A855F7] transition-colors">
+            Já tenho leads
           </a>
-          <a href="#faq" className="hover:text-[#A855F7] transition-colors">FAQ</a>
+          <a href="/#quero-ter-leads" className="hover:text-[#A855F7] transition-colors">
+            Quero ter leads
+          </a>
+          <a href="/#para-quem-e" className="hover:text-[#A855F7] transition-colors">
+            Para quem é
+          </a>
+          <a href="/#como-funciona" className="hover:text-[#A855F7] transition-colors">
+            Como funciona
+          </a>
+          <a href="/#precos" className="hover:text-[#A855F7] transition-colors">
+            Preços
+          </a>
+          <a href="/#faq" className="hover:text-[#A855F7] transition-colors">
+            FAQ
+          </a>
+          <a href="#" className="hover:text-[#A855F7] transition-colors">
+            Konvert Academy
+          </a>
         </nav>
 
         {/* Header Action Button */}
@@ -40,19 +48,21 @@ export const Header: React.FC<HeaderProps> = ({ onOpenDiagnostic }) => {
             href="https://app.konvertmais.com.br"
             target="_blank"
             rel="noopener noreferrer"
-            className="hidden md:inline-flex items-center gap-1.5 px-3.5 py-2 rounded-full text-xs font-semibold text-[#9CA3AF] hover:text-white border border-[#242238] hover:border-[#7C3AED]/50 bg-[#101018] transition-all"
+            className="hidden md:inline-flex items-center gap-1.5 px-3.5 py-2 rounded-full text-xs font-semibold text-[#9CA3AF] hover:text-white border border-[#242238] hover:border-[#7C3AED]/50 bg-[#101018] transition-all whitespace-nowrap"
           >
             <span>Acessar Sistema</span>
           </a>
 
-          <button
-            onClick={onOpenDiagnostic}
-            className="hidden sm:inline-flex items-center gap-2 px-5 py-2.5 rounded-full text-xs md:text-sm font-semibold text-white bg-gradient-to-r from-[#7C3AED] to-[#A855F7] hover:opacity-95 shadow-glow-purple transition-all duration-300 hover:scale-[1.02] cursor-pointer"
+          <a
+            href={NINA_WHATSAPP_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="hidden sm:inline-flex items-center gap-2 px-5 py-2.5 rounded-full text-xs md:text-sm font-semibold text-white bg-gradient-to-r from-[#22C55E] to-emerald-600 hover:opacity-95 shadow-glow-green transition-all duration-300 hover:scale-[1.02] cursor-pointer whitespace-nowrap"
           >
-            <Sparkles className="w-3.5 h-3.5" />
-            <span>Diagnóstico Gratuito</span>
+            <i className="fa-brands fa-whatsapp text-lg"></i>
+            <span>Falar com a Nina</span>
             <ArrowRight className="w-3.5 h-3.5" />
-          </button>
+          </a>
 
           {/* Mobile Menu Trigger */}
           <button
@@ -72,67 +82,70 @@ export const Header: React.FC<HeaderProps> = ({ onOpenDiagnostic }) => {
             <a
               onClick={() => setMobileMenuOpen(false)}
               className="text-[#9CA3AF] hover:text-white py-1"
-              href="#dor"
+              href="/#ja-tenho-leads"
             >
-              O Gargalo
+              Já tenho leads
             </a>
             <a
               onClick={() => setMobileMenuOpen(false)}
               className="text-[#9CA3AF] hover:text-white py-1"
-              href="#como-funciona"
+              href="/#quero-ter-leads"
             >
-              Como funciona
+              Quero ter leads
             </a>
             <a
               onClick={() => setMobileMenuOpen(false)}
               className="text-[#9CA3AF] hover:text-white py-1"
-              href="#o-que-faz"
-            >
-              O que o agente faz
-            </a>
-            <a
-              onClick={() => setMobileMenuOpen(false)}
-              className="text-[#9CA3AF] hover:text-white py-1"
-              href="#para-quem-e"
+              href="/#para-quem-e"
             >
               Para quem é
             </a>
             <a
               onClick={() => setMobileMenuOpen(false)}
               className="text-[#9CA3AF] hover:text-white py-1"
-              href="#a-conta"
+              href="/#como-funciona"
             >
-              A Conta
+              Como funciona
             </a>
             <a
               onClick={() => setMobileMenuOpen(false)}
               className="text-[#9CA3AF] hover:text-white py-1"
-              href="#planos"
+              href="/#precos"
             >
-              Planos
+              Preços
             </a>
             <a
               onClick={() => setMobileMenuOpen(false)}
               className="text-[#9CA3AF] hover:text-white py-1"
-              href="#faq"
+              href="/#faq"
             >
               FAQ
             </a>
-            <button
-              onClick={() => {
-                setMobileMenuOpen(false);
-                onOpenDiagnostic();
-              }}
-              className="mt-2 w-full text-center py-2.5 rounded-full text-sm font-semibold text-white bg-[#7C3AED] hover:bg-[#A855F7] transition cursor-pointer shadow-glow-purple"
+            <a
+              onClick={() => setMobileMenuOpen(false)}
+              className="text-[#9CA3AF] hover:text-white py-1"
+              href="#"
             >
-              Quero meu diagnóstico gratuito
-            </button>
+              Konvert Academy
+            </a>
+
+            <a
+              href={NINA_WHATSAPP_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              onClick={() => setMobileMenuOpen(false)}
+              className="mt-2 w-full text-center py-3 rounded-full text-sm font-bold text-white bg-gradient-to-r from-[#22C55E] to-emerald-600 shadow-glow-green transition flex items-center justify-center gap-2"
+            >
+              <i className="fa-brands fa-whatsapp text-lg"></i>
+              <span>Falar com a Nina no WhatsApp</span>
+            </a>
+
             <a
               href="https://app.konvertmais.com.br"
               target="_blank"
               rel="noopener noreferrer"
               onClick={() => setMobileMenuOpen(false)}
-              className="w-full text-center py-2 rounded-full text-xs font-semibold text-[#9CA3AF] hover:text-white border border-[#242238] hover:border-white/20 transition block"
+              className="w-full text-center py-2.5 rounded-full text-xs font-semibold text-[#9CA3AF] hover:text-white border border-[#242238] hover:border-white/20 transition block"
             >
               Acessar Sistema (app.konvertmais.com.br)
             </a>
@@ -142,4 +155,3 @@ export const Header: React.FC<HeaderProps> = ({ onOpenDiagnostic }) => {
     </header>
   );
 };
-

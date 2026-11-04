@@ -5,7 +5,35 @@ import {defineConfig} from 'vite';
 
 export default defineConfig(() => {
   return {
-    plugins: [react(), tailwindcss()],
+    plugins: [
+      react(),
+      tailwindcss(),
+      {
+        name: 'academy-static-rewrite',
+        configureServer(server) {
+          server.middlewares.use((req, _res, next) => {
+            const url = req.url ? req.url.split('?')[0] : '';
+            if (url === '/academy' || url === '/academy/') {
+              req.url = '/academy/index.html';
+            } else if (url === '/curso' || url === '/curso/') {
+              req.url = '/academy/index.html';
+            }
+            next();
+          });
+        },
+        configurePreviewServer(server) {
+          server.middlewares.use((req, _res, next) => {
+            const url = req.url ? req.url.split('?')[0] : '';
+            if (url === '/academy' || url === '/academy/') {
+              req.url = '/academy/index.html';
+            } else if (url === '/curso' || url === '/curso/') {
+              req.url = '/academy/index.html';
+            }
+            next();
+          });
+        },
+      },
+    ],
     resolve: {
       alias: {
         '@': path.resolve(__dirname, '.'),

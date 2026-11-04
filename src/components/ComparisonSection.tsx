@@ -1,11 +1,8 @@
 import React, { useState } from 'react';
-import { DollarSign, Clock, Users, ArrowRight, ShieldAlert, Sparkles } from 'lucide-react';
+import { DollarSign, Sparkles, ArrowRight } from 'lucide-react';
+import { NINA_WHATSAPP_URL } from '../data/mockData';
 
-interface ComparisonSectionProps {
-  onOpenDiagnostic?: () => void;
-}
-
-export const ComparisonSection: React.FC<ComparisonSectionProps> = ({ onOpenDiagnostic }) => {
+export const ComparisonSection: React.FC = () => {
   const [contractValue, setContractValue] = useState<number>(1800);
   const [lostSalesEstimate, setLostSalesEstimate] = useState<number>(4);
 
@@ -20,14 +17,14 @@ export const ComparisonSection: React.FC<ComparisonSectionProps> = ({ onOpenDiag
             A Conta
           </span>
           <h2 className="text-3xl sm:text-5xl font-extrabold text-white tracking-tight">
-            Uma venda a mais por mês já paga o Konvert.
+            Uma venda a mais por mês já paga o KonvertMais.
           </h2>
           <p className="text-base sm:text-lg text-[#9CA3AF] max-w-2xl mx-auto leading-relaxed">
-            Um atendente custa de <strong className="text-white">R$ 2.500 a R$ 4.000 por mês</strong>, trabalha 8 horas e falta. O agente atende <strong className="text-[#22C55E]">24 horas, todos os dias, a partir de R$ 997</strong>. Se o seu cliente vale o valor do contrato, quantas vendas você perde hoje por demora?
+            Um atendente custa de <strong className="text-white">R$ 2.500 a R$ 4.000 por mês</strong> e trabalha 8 horas por dia. O KonvertMais atende <strong className="text-[#22C55E]">24 horas, todos os dias, a partir de R$ 247</strong>.
           </p>
         </div>
 
-        {/* Comparison Cards: Atendente Humano vs Agente Konvert */}
+        {/* Comparison Cards: Atendente Humano vs KonvertMais */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
           {/* Card Atendente */}
           <div className="p-8 rounded-3xl bg-[#101018] border border-[#242238] space-y-5">
@@ -61,37 +58,37 @@ export const ComparisonSection: React.FC<ComparisonSectionProps> = ({ onOpenDiag
             </ul>
           </div>
 
-          {/* Card Konvert Mais */}
+          {/* Card KonvertMais */}
           <div className="p-8 rounded-3xl bg-gradient-to-br from-[#141422] to-[#101018] border-2 border-[#7C3AED] shadow-glow-purple space-y-5">
             <div className="flex items-center justify-between border-b border-[#7C3AED]/30 pb-4">
               <div>
                 <h3 className="text-lg font-bold text-white flex items-center gap-2">
-                  Agente Konvert Mais
+                  KonvertMais
                   <Sparkles className="w-4 h-4 text-[#A855F7]" />
                 </h3>
-                <p className="text-xs text-[#22C55E]">Comercial funcionando sozinho</p>
+                <p className="text-xs text-[#22C55E]">Comercial funcionando 24h</p>
               </div>
               <span className="text-xs font-bold text-white bg-[#7C3AED] px-3 py-1 rounded-full shadow-sm">
-                A partir de R$ 997/mês
+                A partir de R$ 247/mês
               </span>
             </div>
 
             <ul className="space-y-3.5 text-sm text-[#E5E7EB]">
               <li className="flex items-center gap-3">
                 <span className="w-2 h-2 rounded-full bg-[#22C55E] shrink-0"></span>
-                <span>Investimento fixo sem encargos trabalhistas</span>
+                <span>Investimento fixo a partir de <strong>R$ 247/mês</strong></span>
               </li>
               <li className="flex items-center gap-3">
                 <span className="w-2 h-2 rounded-full bg-[#22C55E] shrink-0"></span>
-                <span>Atende <strong>24 horas, todos os dias</strong>, feriados e madrugadas</span>
+                <span>Atende <strong>24 horas, todos os dias</strong>, inclusive à noite e fim de semana</span>
               </li>
               <li className="flex items-center gap-3">
                 <span className="w-2 h-2 rounded-full bg-[#22C55E] shrink-0"></span>
-                <span>Nunca falta e mantém sempre o roteiro comercial do nicho</span>
+                <span>Responde em segundos e não deixa ninguém esperando</span>
               </li>
               <li className="flex items-center gap-3">
                 <span className="w-2 h-2 rounded-full bg-[#22C55E] shrink-0"></span>
-                <span>Atende múltiplos leads simultaneamente em cerca de 1 minuto</span>
+                <span>Passa para o vendedor só quem está pronto para comprar</span>
               </li>
             </ul>
           </div>
@@ -149,19 +146,19 @@ export const ComparisonSection: React.FC<ComparisonSectionProps> = ({ onOpenDiag
                 R$ {lostMonthlyRevenue.toLocaleString('pt-BR')}/mês
               </p>
             </div>
-            {onOpenDiagnostic && (
-              <button
-                onClick={onOpenDiagnostic}
-                className="pulse-btn-green px-6 py-3 rounded-xl bg-gradient-to-r from-[#22C55E] to-emerald-600 text-white text-xs sm:text-sm font-bold shadow-glow-green hover:opacity-95 transition flex items-center gap-2 cursor-pointer"
-              >
-                <span>Estancar perda no WhatsApp</span>
-                <ArrowRight className="w-4 h-4" />
-              </button>
-            )}
+            <a
+              href={NINA_WHATSAPP_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="pulse-btn-green px-6 py-3.5 rounded-xl bg-gradient-to-r from-[#22C55E] to-emerald-600 text-white text-xs sm:text-sm font-bold shadow-glow-green hover:opacity-95 transition flex items-center justify-center gap-2 cursor-pointer w-full sm:w-auto"
+            >
+              <i className="fa-brands fa-whatsapp text-lg"></i>
+              <span>Falar com a Nina no WhatsApp</span>
+              <ArrowRight className="w-4 h-4" />
+            </a>
           </div>
         </div>
       </div>
     </section>
   );
 };
-

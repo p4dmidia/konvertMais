@@ -1,30 +1,55 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Header } from './components/Header';
 import { HeroSection } from './components/HeroSection';
 import { ProblemSection } from './components/ProblemSection';
-import { HowItWorksSection } from './components/HowItWorksSection';
-import { BenefitsSection } from './components/BenefitsSection';
-import { LiveDemoSection } from './components/LiveDemoSection';
+import { MachineSection } from './components/MachineSection';
 import { TargetAudienceSection } from './components/TargetAudienceSection';
-import { ComparisonSection } from './components/ComparisonSection';
-import { SocialProofSection } from './components/SocialProofSection';
+import { LiveDemoSection } from './components/LiveDemoSection';
+import { HowItWorksSection } from './components/HowItWorksSection';
 import { PricingSection } from './components/PricingSection';
-import { UpsellTrafficSection } from './components/UpsellTrafficSection';
+import { ComparisonSection } from './components/ComparisonSection';
 import { FAQSection } from './components/FAQSection';
 import { FinalCTASection } from './components/FinalCTASection';
 import { Footer } from './components/Footer';
-import { CheckoutModal } from './components/CheckoutModal';
+import { TermosPage } from './pages/TermosPage';
+import { PrivacidadePage } from './pages/PrivacidadePage';
+import { NINA_WHATSAPP_URL } from './data/mockData';
 
 export default function App() {
-  const [isDiagnosticOpen, setIsDiagnosticOpen] = useState(false);
+  const pathname = typeof window !== 'undefined' ? window.location.pathname : '/';
 
-  const handleOpenDiagnostic = () => {
-    setIsDiagnosticOpen(true);
-  };
+  // Rota: Termos de Uso
+  if (pathname === '/termos' || pathname === '/termos/') {
+    return <TermosPage />;
+  }
 
-  const handleCloseDiagnostic = () => {
-    setIsDiagnosticOpen(false);
-  };
+  // Rota: Política de Privacidade
+  if (pathname === '/privacidade' || pathname === '/privacidade/') {
+    return <PrivacidadePage />;
+  }
+
+  // Rota: Konvert Academy (legado ou acesso direto)
+  const isAcademyPath =
+    pathname === '/academy' ||
+    pathname === '/academy/' ||
+    pathname === '/curso' ||
+    pathname === '/curso/';
+
+  React.useEffect(() => {
+    if (isAcademyPath) {
+      window.location.replace('/academy/index.html' + window.location.hash);
+    }
+  }, [isAcademyPath]);
+
+  if (isAcademyPath) {
+    return (
+      <iframe
+        src={`/academy/index.html${window.location.hash}`}
+        title="Konvert Academy"
+        className="w-screen h-screen border-none fixed inset-0 z-50 bg-[#f8f7fc]"
+      />
+    );
+  }
 
   return (
     <div className="relative min-h-screen bg-[#07070B] text-[#E5E7EB] antialiased selection:bg-[#7C3AED] selection:text-white">
@@ -34,65 +59,70 @@ export default function App() {
       <div className="fixed top-[45%] -left-32 w-80 h-80 bg-[#7C3AED]/10 rounded-full blur-[130px] pointer-events-none -z-10"></div>
 
       {/* Main Header */}
-      <Header onOpenDiagnostic={handleOpenDiagnostic} />
+      <Header />
 
-      {/* Main Sections */}
-      <main>
-        {/* 1. Topo: Hero */}
-        <HeroSection onOpenDiagnostic={handleOpenDiagnostic} />
+      {/* Main Sections (na ordem exata da especificação) */}
+      <main className="pb-24 sm:pb-0">
+        {/* Seção 1. Primeira dobra */}
+        <HeroSection />
 
-        {/* 2. A dor & 3. A virada */}
+        {/* Seção 2. Para quem já tem leads (#ja-tenho-leads) */}
         <ProblemSection />
 
-        {/* 4. Como funciona */}
-        <HowItWorksSection onOpenDiagnostic={handleOpenDiagnostic} />
+        {/* Seção 3. Para quem quer montar a máquina de vendas (#quero-ter-leads) */}
+        <MachineSection />
 
-        {/* 5. O que o agente faz */}
-        <BenefitsSection />
-
-        {/* Demonstração Real Interativa */}
-        <LiveDemoSection />
-
-        {/* 6. Para quem é */}
+        {/* Seção 4. Para quem é (#para-quem-e) */}
         <TargetAudienceSection />
 
-        {/* 7. A conta */}
-        <ComparisonSection onOpenDiagnostic={handleOpenDiagnostic} />
+        {/* Demonstração interativa por nicho com 4 abas */}
+        <LiveDemoSection />
 
-        {/* 8. Prova (Conversas reais + Programa Clientes Fundadores) */}
-        <SocialProofSection onOpenDiagnostic={handleOpenDiagnostic} />
+        {/* Seção 5. Como funciona (#como-funciona) */}
+        <HowItWorksSection />
 
-        {/* 9. Os planos (Dois planos: R$ 997 e R$ 1.497 com P4D) */}
-        <PricingSection onOpenDiagnostic={handleOpenDiagnostic} />
+        {/* Seção 6. Planos e preços (#precos) */}
+        <PricingSection />
 
-        {/* 10. Garantia (No ar em até 7 dias ou devolução da 1ª mensalidade) */}
-        <UpsellTrafficSection />
+        {/* Calculadora (A conta) */}
+        <ComparisonSection />
 
-        {/* 11. Perguntas frequentes */}
+        {/* Seção 7. Perguntas frequentes (#faq) */}
         <FAQSection />
 
-        {/* 12. Fechamento */}
-        <FinalCTASection onOpenDiagnostic={handleOpenDiagnostic} />
+        {/* Seção 8. Chamada final (#fechamento) */}
+        <FinalCTASection />
       </main>
 
       {/* Main Footer */}
       <Footer />
 
-      {/* Agendamento de Diagnóstico Gratuito Modal */}
-      <CheckoutModal isOpen={isDiagnosticOpen} onClose={handleCloseDiagnostic} />
-
-      {/* Floating WhatsApp Action Button */}
-      <div className="fixed bottom-6 right-6 z-40">
-        <button
-          onClick={handleOpenDiagnostic}
-          className="pulse-btn-green flex items-center gap-2.5 px-4 py-3 rounded-full bg-gradient-to-r from-[#22C55E] to-emerald-600 text-white font-bold text-xs sm:text-sm shadow-glow-green hover:scale-105 transition-all cursor-pointer"
-          title="Agendar diagnóstico gratuito no WhatsApp"
+      {/* Botão fixo no rodapé no celular */}
+      <div className="sm:hidden fixed bottom-0 left-0 right-0 p-3 bg-[#07070B]/95 backdrop-blur-lg border-t border-[#242238] z-50">
+        <a
+          href={NINA_WHATSAPP_URL}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="pulse-btn-green w-full flex items-center justify-center gap-2.5 py-3.5 px-4 rounded-xl bg-gradient-to-r from-[#22C55E] to-emerald-600 text-white font-bold text-sm shadow-glow-green"
         >
           <i className="fa-brands fa-whatsapp text-xl"></i>
-          <span className="hidden sm:inline">Diagnóstico Gratuito</span>
-        </button>
+          <span>Falar com a Nina no WhatsApp</span>
+        </a>
+      </div>
+
+      {/* Floating WhatsApp Action Button no desktop */}
+      <div className="hidden sm:block fixed bottom-6 right-6 z-40">
+        <a
+          href={NINA_WHATSAPP_URL}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="pulse-btn-green flex items-center gap-2.5 px-4 py-3 rounded-full bg-gradient-to-r from-[#22C55E] to-emerald-600 text-white font-bold text-xs sm:text-sm shadow-glow-green hover:scale-105 transition-all cursor-pointer"
+          title="Falar com a Nina no WhatsApp"
+        >
+          <i className="fa-brands fa-whatsapp text-xl"></i>
+          <span>Falar com a Nina no WhatsApp</span>
+        </a>
       </div>
     </div>
   );
 }
-

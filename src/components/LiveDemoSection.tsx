@@ -60,13 +60,13 @@ export const LiveDemoSection: React.FC = () => {
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center max-w-3xl mx-auto space-y-4 mb-10">
           <span className="text-xs uppercase tracking-widest font-semibold text-[#22C55E] bg-[#22C55E]/10 px-3 py-1 rounded-full border border-[#22C55E]/30">
-            Demonstração Real Interativa
+            Exemplo de conversa
           </span>
           <h2 className="text-3xl sm:text-5xl font-extrabold text-white tracking-tight">
             Veja como ele atende o seu lead.
           </h2>
           <p className="text-[#9CA3AF] text-base sm:text-lg">
-            Sem respostas robotizadas ou menus engessados ("digite 1 para..."). Uma conversa natural, empática, que qualifica e conduz até a call ou venda.
+            Sem respostas robotizadas ou menus engessados ("digite 1 para..."). Exemplos de como o agente conduz uma conversa natural, que qualifica e entrega quem está pronto.
           </p>
 
           {/* Niche Tabs */}
